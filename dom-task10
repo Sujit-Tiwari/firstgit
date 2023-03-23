@@ -1,0 +1,19 @@
+let name =document.getElementById('name').value;
+     //Store into local Storage
+     localStorage.setItem('Name',name);
+     console.log(name);
+     let email =document.getElementById('exampleInputEmail1').value;
+     //Store into local Storage
+     localStorage.setItem('Email',email);
+     console.log(email);
+     let number =document.getElementById('number').value;
+     //Store into local Storage
+     localStorage.setItem('Number',number);
+     console.log(number);
+     let date =document.getElementById('event_start_date').value;
+     //Store into local Storage
+     localStorage.setItem('Date',date);
+     let time =document.getElementById('event_start_time').value;
+     //Store into local Storage
+     localStorage.setItem('Time',time);
+     console.log(date+" "+time);
