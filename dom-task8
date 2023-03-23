@@ -1,0 +1,47 @@
+var form = document.getElementById('addForm');
+var itemList = document.getElementById('items');
+form.addEventListener('submit' , addItem);
+itemList.addEventListener('click',removeItem);
+itemList.addEventListener('click',editItem);
+
+function addItem(a){
+  a.preventDefault();
+  
+  var newitem = document.getElementById('item').value;
+  var li=document.createElement('li');
+
+  li.className = 'list-group-item';
+  
+  li.appendChild(document.createTextNode(newitem));
+
+  var delet = document.createElement('button');
+
+  delet.className = 'btn btn-danger btn-sm float-right delete';
+
+  delet.appendChild(document.createTextNode('X'));
+
+//   for edit btn
+  let editBtn = document.createElement('button');
+      editBtn.className ='btn btn-primary btn-sm float-right delete';
+      editBtn.append(document.createTextNode(' E'))
+
+      li.appendChild(editBtn);
+
+  li.appendChild(delet);
+
+  itemList.appendChild(li);
+   
+}
+function removeItem(e){
+    if(e.target.classList.contains('delete')){
+        if(confirm('Are you sure Sujji ?'))
+        {
+            var li=e.target.parentElement;
+            itemList.removeChild(li);
+        }
+    }
+}
+function editItem(e){
+    console.log('edit');
+    
+  }
