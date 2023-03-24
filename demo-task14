@@ -1,0 +1,54 @@
+prnt.addEventListener('submit', onsubmit);
+    function onsubmit(e){
+      e.preventDefault();
+
+      let name =document.getElementById('name').value;
+
+      let email =document.getElementById('email').value;
+
+      let number =document.getElementById('number').value;
+
+      let date =document.getElementById('date').value;
+      let time =document.getElementById('time').value;
+      let btn =document.getElementById('deletbtn');
+      const obj ={
+        name,
+        email,
+        number,
+        date,
+        time
+
+      };
+      localStorage.setItem(obj.name,JSON.stringify(obj));
+      showUserOnScreen(obj);
+
+    }
+    function showUserOnScreen(obj){
+        const parentEle =document.getElementById("items");
+        const childEle=document.createElement('li')
+
+        childEle.textContent =obj.name+'-'+obj.email+'-'+obj.number+'-'+obj.date+'-'+obj.time;
+       // Create Delete Button
+        const deletebtn =document.createElement('input')//Delete Button
+        const editbtn =document.createElement('input') //Edit Button
+        deletebtn.type='button';
+        deletebtn.value='Delete'; //value of delete button
+        editbtn.type='button';
+        editbtn.value='Edit'; //value of edit button
+        deletebtn.onclick =()=>{
+            localStorage.removeItem(obj.name);
+            parentEle.removeChild(childEle);
+        }
+        editbtn.onclick =()=>{
+            localStorage.removeItem(obj.name);
+            parentEle.removeChild(childEle);
+            document.getElementById('name').value=obj.name;
+            document.getElementById('email').value=obj.email;
+
+        }
+        childEle.appendChild(deletebtn)//deletebtn append into li
+        childEle.appendChild(editbtn)//editbtn append into li
+
+        parentEle.appendChild(childEle);
+
+    }
