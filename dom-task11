@@ -1,0 +1,20 @@
+ prnt.addEventListener('submit', onsubmit);
+    function onsubmit(e) {
+        e.preventDefault();
+
+        //Store the data into the Object Formate
+        let name = document.getElementById('name').value;
+        let email = document.getElementById('exampleInputEmail1').value;
+        let number = document.getElementById('number').value;
+        let date = document.getElementById('event_start_date').value;
+        let time = document.getElementById('event_start_time').value;
+        let MyData = {
+            "Name": name,
+            "Email": email,
+            "number": number,
+            "Date": date,
+            "Time": time
+        };
+        localStorage.setItem('MyData', JSON.stringify(MyData));
+        let data = JSON.parse(localStorage.getItem('MyData'))
+        console.log(data);
