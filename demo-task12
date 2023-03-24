@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project: 1</title>
+    <link rel="stylesheet" href="stylep.css">
+</head>
+<body>
+    <form action="#" id="prnt">
+        <div class="container">
+            <h2 >Book a Call</h2>
+            <p>You will get a call back from us soon!!!</p>
+            <hr>
+
+            <div >
+                <label for="name">Name:</label><br>
+                <input class="container2" type="text" name="myName" id="name" >
+            </div>
+            <div>
+                <label for="email">Email:</label><br>
+                <input class="container2" type="email" name="myEmail" id="email" >
+            </div>
+            <div>
+                <label for="number">PhoneNo:</label><br>
+                <input class="container2" type="text" name="myNumber" id="number" >
+            </div>
+            
+            <div>
+                <button type="submit"class="btn">Submit</button>
+                <br>
+            </div>
+        </div>
+    </form>
+    <ul id="items" class="list-group" ></ul>
+    <script src="demo.js"></script>
+</body>
+</html>
+
+//javaScript
+prnt.addEventListener('submit', onsubmit);
+function onsubmit(e){
+  e.preventDefault();
+  let name =document.getElementById('name').value;
+  let email =document.getElementById('email').value;
+  let number =document.getElementById('number').value;
+  let data ="  Name:"+name+"  Email:"+email+"  PhoneNo:"+number;
+  let listItem =document.getElementById("items");
+  let newItem =document.createElement('li');
+  newItem.appendChild(document.createTextNode(data))
+  listItem.appendChild(newItem);
+  console.log(newItem.textContent)
+  localStorage.setItem(name,newItem.textContent)//Store into the Local Storage
+}
